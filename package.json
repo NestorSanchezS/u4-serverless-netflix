@@ -1,0 +1,15 @@
+{
+  "name": "u4-serverless-netflix",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "db:load": "psql \"$DATABASE_URL\" -f db/load.sql"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

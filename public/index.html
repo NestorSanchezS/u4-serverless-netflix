@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo Netflix · Serverless</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Catálogo Netflix</h1>
+    <p>Aplicación serverless · Vercel Functions + Neon Postgres Serverless</p>
+  </header>
+
+  <main>
+    <section class="cards" id="cards"></section>
+
+    <section class="charts">
+      <div class="chart"><h2>Títulos por año de estreno</h2><canvas id="chartYear"></canvas></div>
+      <div class="chart"><h2>Top 10 países</h2><canvas id="chartCountry"></canvas></div>
+    </section>
+
+    <section class="search">
+      <h2>Buscar</h2>
+      <form id="idForm" class="row">
+        <label for="idInput">Por ID (show_id)</label>
+        <input id="idInput" placeholder="ej. s1, s2045" required />
+        <button type="submit">Buscar ID</button>
+      </form>
+      <form id="searchForm" class="row">
+        <label for="qInput">Por título</label>
+        <input id="qInput" placeholder="ej. stranger, matrix" />
+        <select id="typeSelect">
+          <option value="">Todos</option>
+          <option value="Movie">Películas</option>
+          <option value="TV Show">Series</option>
+        </select>
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="detail" class="detail" hidden></div>
+    </section>
+
+    <section>
+      <p id="summary" class="summary"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Título</th><th>Tipo</th><th>País</th><th>Año</th><th>Clasificación</th><th>Duración</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="pager">
+        <button id="prev">← Anterior</button>
+        <span id="pageInfo"></span>
+        <button id="next">Siguiente →</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
